@@ -14,7 +14,7 @@ class Api {
     _dio = Dio();
     _dio.options.baseUrl = Common.BASE_API;
     _dio.options.headers['Accept'] = 'application/json';
-    _dio.options.connectTimeout = 20000;
+    _dio.options.connectTimeout = const Duration(milliseconds: 20000);
     _dio.interceptors.add(LoggingInterceptor());
   }
 
@@ -24,7 +24,7 @@ class Api {
     try {
       Response response = await handle;
       return response.data;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       print("res error---${error.response}");
       return handlerError(error);
     }

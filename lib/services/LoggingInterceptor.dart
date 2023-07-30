@@ -6,7 +6,8 @@ class LoggingInterceptor extends Interceptor {
   int _maxCharactersPerLine = 200;
 
   @override
-  Future onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString(Common.TOKEN);
     if (token != null) {
@@ -43,7 +44,7 @@ class LoggingInterceptor extends Interceptor {
   }
 
   @override
-  onError(DioError err, ErrorInterceptorHandler handler) {
+  onError(DioException err, ErrorInterceptorHandler handler) {
     print("<-- Error -->");
     print(err.error);
     print(err.message);

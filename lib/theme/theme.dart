@@ -17,7 +17,7 @@ class CustomTheme {
   }
 
   static getCusTheme(THEME_MODE themeMode) {
-    switch(themeMode) {
+    switch (themeMode) {
       case THEME_MODE.DARK:
         return CustomTheme.dark();
         break;
@@ -28,37 +28,29 @@ class CustomTheme {
         break;
     }
   }
-
 }
 
 final ThemeData lightThemeData = ThemeData.light().copyWith(
   brightness: Brightness.light,
   primaryColor: Colors.blue,
   primaryColorDark: Colors.red,
-  backgroundColor: Colors.white,
-  accentColor: Colors.redAccent,
-  bottomAppBarColor: Colors.white,
   textTheme: TextTheme(
-    subtitle1: TextStyle(
-      color: Colors.red,
-      fontFamily: 'abc'
-    ),
+    titleMedium: TextStyle(color: Colors.red, fontFamily: 'abc'),
   ),
+  colorScheme: ColorScheme.fromSwatch()
+      .copyWith(secondary: Colors.redAccent)
+      .copyWith(background: Colors.white),
+  bottomAppBarTheme: BottomAppBarTheme(color: Colors.white),
 );
 
 final ThemeData darkThemeData = ThemeData.dark().copyWith(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
     primaryColorDark: Colors.red,
-    backgroundColor: Colors.red,
-    accentColor: Colors.red,
-    bottomAppBarColor: Colors.white,
-    textTheme: TextTheme(
-        subtitle1: TextStyle(
-            color: Colors.red,
-            fontFamily: 'abc'
-        )
-    ).apply(
-      bodyColor: AppColor.text
-    )
-);
+    textTheme:
+        TextTheme(titleMedium: TextStyle(color: Colors.red, fontFamily: 'abc'))
+            .apply(bodyColor: AppColor.text),
+    colorScheme: ColorScheme.fromSwatch()
+        .copyWith(secondary: Colors.red)
+        .copyWith(background: Colors.red),
+    bottomAppBarTheme: BottomAppBarTheme(color: Colors.white));
